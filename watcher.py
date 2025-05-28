@@ -41,11 +41,11 @@ logger.setLevel(logging.INFO)
 
 handler = TimedRotatingFileHandler(
     filename=log_file,
-    when='midnight',  # 자정 기준 롤링
-    interval=1,  # 매 1일마다
-    backupCount=14,  # 최근 7일치만 보관
+    when='midnight',     # 자정 기준 롤링
+    interval=1,          # 매 1일마다
+    backupCount=14,      # 최근 14일치만 보관
     encoding='utf-8',
-    utc=False  # 로컬 시간 기준 (True면 UTC 기준)
+    utc=False            # 로컬 시간 기준 (True면 UTC 기준)
 )
 
 formatter = logging.Formatter('%(asctime)s - [%(levelname)s] %(filename)s:%(lineno)d - %(message)s')  # Formatter
