@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<directories>
+    <directory>
+        <source-path>/home/tester/file-watch/1</source-path>
+        <file-pattern>*.log</file-pattern>
+        <target-path>/home/tester/file-watch/2</target-path>
+        <action>copy</action>
+    </directory>
+</directories>
