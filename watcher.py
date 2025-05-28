@@ -9,6 +9,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import yaml
 import fnmatch
+import subprocess
 
 
 # YAML 설정 파일 로드 함수
@@ -115,6 +116,26 @@ def process_file(path, config: DirectoryConfig):
         os.remove(path)
     else:
         logger.info(f"[SKIP] Unsupported action: {config.action}")
+
+
+def is_hdfs_path(path):
+    return path.startswith("hdfs://") or path.startswith("/user/")  # HDFS 기준 경로
+
+
+def hdfs_copy(local_path, hdfs_dest):
+    try:
+        subprocess.run(["hdfs", "dfs", "-copyFromLocal", local_path, hdfs_dest], check=True)
+        print(f"[HDFS COPY] {local_path} → {hdfs_dest}")
+    except subprocess.CalledProcessError as e:
+        print(f"[ERROR] Failed to copy to HDFS: {e}")
+
+
+def hdfs_move(local_path, hdfs_dest):
+    try:
+        subprocess.run(["hdfs", "dfs", "-moveFromLocal", local_path, hdfs_dest], check=True)
+        print(f"[HDFS MOVE] {local_path} → {hdfs_dest}")
+    except subprocess.CalledProcessError as e:
+        print(f"[ERROR] Failed to move to HDFS: {e}")
 
 
 def main():

@@ -6,7 +6,8 @@
 ## PyPi 패키지 설치
 
 ```
-pip3 install pandas watchdog argparse lxml
+yum install -y krb5-devel
+pip3 install pandas watchdog argparse lxml hdfs requests-kerberos
 ```
 
 ## Configuration
