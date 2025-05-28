@@ -34,7 +34,7 @@ app:
 </directories>
 ```
 
-## 실행
+## Run
 
 ```
 python3 watcher.py --config config.yaml
