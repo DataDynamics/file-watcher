@@ -11,7 +11,6 @@ import yaml
 import fnmatch
 import subprocess
 
-
 # YAML 설정 파일 로드 함수
 def load_config(path='config.yaml'):
     with open(path, 'r') as f:
